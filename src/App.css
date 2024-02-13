@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.blank-space
+{
+  padding: 5px;
+}
+
+.punctuation
+{
+  padding-left: 0;
+}
+
+.word
+{
+  padding: 0 0 0 2.7px;
+  display: inline-block;
+
+}
+
+.initial-width
+{
+  width: 75%;
+}
+
+.initial-height
+{
+  height: 100vh;
+}
+
+@media print
+{
+
+  .hidden-on-print
+  {
+    display: none;
+
+  }
+
+  .height-on-print
+  {
+    height: auto
+  }
+
+
+  .width-on-print
+  {
+    width: 100%;
+  }
+}
