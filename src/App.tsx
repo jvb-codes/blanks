@@ -1,6 +1,6 @@
 import "./App.css";
 import { GeneralContextProvider } from "./contexts/GeneralContext";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import Wrapper from "./components/Wrapper";
 import Container from "./components/Container";
 
@@ -8,7 +8,7 @@ import Home from "./pages/Home";
 import TextEntry from "./pages/TextEntry";
 import Blanks from "./pages/Blanks";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <Home />,
