@@ -1,35 +1,16 @@
 import "./App.css";
-import { GeneralContextProvider } from "./contexts/GeneralContext";
-import { createHashRouter, RouterProvider } from "react-router-dom";
+import { WorkSheetContextProvider } from "./contexts/WorkSheetContext";
 import Wrapper from "./components/Wrapper";
 import Container from "./components/Container";
-
-import Home from "./pages/Home";
-import TextEntry from "./pages/TextEntry";
-import Blanks from "./pages/Blanks";
-
-const router = createHashRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "entry",
-    element: <TextEntry />,
-  },
-  {
-    path: "blanks",
-    element: <Blanks />,
-  },
-]);
+import WorkSheet from "./components/WorkSheet";
 
 function App() {
   return (
     <Wrapper>
       <Container>
-        <GeneralContextProvider>
-          <RouterProvider router={router} />
-        </GeneralContextProvider>
+        <WorkSheetContextProvider>
+          <WorkSheet />
+        </WorkSheetContextProvider>
       </Container>
     </Wrapper>
   );

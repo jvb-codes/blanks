@@ -1,26 +1,20 @@
-import { useState, useRef, useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
-const useAutoHeight = () => {
-  const textAreaRef = useRef<HTMLTextAreaElement>(null);
-
-  const [scrHeight, setScrHeight] = useState<number>(56);
-
-  const autoHeight = () => {
-    if (textAreaRef.current !== null) {
-      const currentHeight = textAreaRef.current.scrollHeight;
-      setScrHeight(currentHeight);
-
-      if (textAreaRef.current.value.length === 0) {
-        setScrHeight(56);
-      }
+const useAutoHeight = (
+  elementRef?: React.MutableRefObject<HTMLTextAreaElement | null>,
+  dependency?: string,
+  isPreviewed?: boolean
+) => {
+  const adjustHeight = useCallback(() => {
+    if (elementRef && elementRef.current) {
+      elementRef.current.style.height = "auto";
+      elementRef.current.style.height = `${elementRef.current.scrollHeight}px`;
     }
-  };
+  }, [elementRef]);
 
   useEffect(() => {
-    autoHeight();
-  }, [scrHeight]);
-
-  return { textAreaRef, autoHeight, scrHeight };
+    adjustHeight();
+  }, [dependency, adjustHeight, isPreviewed]);
 };
 
 export default useAutoHeight;
